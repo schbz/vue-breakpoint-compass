@@ -1,0 +1,1 @@
+Base Template for Vue 3 Plugin using Typescript and rollup. 
