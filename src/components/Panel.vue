@@ -1,8 +1,10 @@
-<template>
-  <h1 :style="{ color: 'green' }">
-  This is the panel added from plugin. Slot:
-    <slot></slot>
+<template><div>
+  <h1 :style="{ visibility: $devHelp ? 'visible' : 'hidden' }">
+  This Text should only be visible if $devHelp exists
   </h1>
+    This is the panel added from plugin. Slot:
+    <slot></slot>
+    </div>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
