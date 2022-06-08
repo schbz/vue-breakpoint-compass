@@ -1,6 +1,6 @@
 {
   "name": "@schbz/dev-helper-panel",
-  "version": "0.1.2",
+  "version": "0.1.23",
   "main": "dist/index.js",
   "license": "MIT",
   "peerDependencies": {
@@ -17,6 +17,7 @@
     "vue": "^3.2.20"
   },
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "pack": "npm pack"
   }
 }
