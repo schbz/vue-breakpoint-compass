@@ -1,6 +1,6 @@
 {
   "name": "@schbz/dev-helper-panel",
-  "version": "0.1.23",
+  "version": "0.1.25",
   "main": "dist/index.js",
   "license": "MIT",
   "peerDependencies": {
@@ -19,5 +19,8 @@
   "scripts": {
     "build": "rollup -c",
     "pack": "npm pack"
+  },
+  "dependencies": {
+    "@vueuse/core": "^8.6.0"
   }
 }

@@ -2,6 +2,7 @@ import typescript from 'rollup-plugin-typescript2';
 import vue from 'rollup-plugin-vue';
 import clear from 'rollup-plugin-clear';
 
+
 export default async function config(args) {
   return {
     input: 'src/index.ts',
@@ -23,6 +24,7 @@ export default async function config(args) {
       clear({
         targets: ['./dist'],
       })
+
     ],
   };
 }
