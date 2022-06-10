@@ -8,6 +8,14 @@
       >
         {{ width }}
       </div>
+      <div
+        class="width:100%; height:4px; border-style: solid; border-width: 1px; border-color: red;"
+      >
+        <div
+          style="background: color: red; height:100%"
+          :style="{ width: progressNext.toString() + '%' }"
+        ></div>
+      </div>
       <slot></slot>
     </div>
   </div>
@@ -16,6 +24,7 @@
 <script setup lang="ts">
 import { CSSProperties } from "vue";
 import { useWindowSize } from "@vueuse/core";
+import { computed } from "@vue/reactivity";
 
 const styleObject: CSSProperties = {
   position: "fixed",
@@ -24,8 +33,59 @@ const styleObject: CSSProperties = {
   width: "20px",
   height: "20px",
   fontSize: "10px",
-  backgroundColor: "white",
+  backgroundColor: "rgba(0,0,0,.5)",
+};
+
+const breakPoints = [
+  { size: "sm", px: 640 },
+  { size: "md", px: 768 },
+  { size: "lg", px: 1024 },
+  { size: "xl", px: 1280 },
+  { size: "2xl", px: 1536 },
+];
+
+const sorted = breakPoints.sort((a, b) => a.px - b.px);
+
+// returns current breakpoint as a string from a given width in number of pixels
+const current = (w: Number): String => {
+  let size = "none";
+  sorted.forEach(function (item) {
+    if (w >= item.px) {
+      size = item.size;
+    }
+    if (w < item.px) return item.size;
+  });
+  return size;
+};
+
+//returns the number of pixels in the next higher breakpoint from a given current breakpoint string
+const next = (c: String): Number => {
+  return sorted[sorted.findIndex((i) => i.size === c) + 1].px || sorted[0].px;
+};
+
+//gives the most recent breakpoint number in pixels
+const cur = (c: String): Number => {
+  if ((c = "none")) {
+    return 0;
+  }
+  return sorted[sorted.findIndex((i) => i.size === c)].px || 0;
 };
 
 const { width } = useWindowSize();
+
+const progressNext = computed((): Number => {
+  // check to see if current breakpoint is the highest, then return 100
+  if (
+    sorted.findIndex((i) => i.size === current(width.value)) >=
+    sorted.length - 1
+  ) {
+    return 100;
+  }
+  const upgrade = next(current(width.value));
+  const lastBP = cur(current(width.value));
+  const factor = width.value / Number(upgrade);
+  return Math.round(
+    ((width.value - Number(lastBP)) / (Number(upgrade) - Number(lastBP))) * 100
+  );
+});
 </script>
