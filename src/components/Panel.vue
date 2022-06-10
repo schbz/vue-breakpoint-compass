@@ -3,23 +3,21 @@
     <div
       id="message"
       style=""
-      :style="{ color: $devHelp.panelText == 'green' ? 'green' : 'red' }"
+      :style="{ color: $devHelp.panelText == 'white' ? 'white' : 'red' }"
     >
-      {{ width }}
-      <p>▣</p>
-      {{ current(width) }}
+      <p>{{ width }} ▣ {{ current(width) }}</p>
     </div>
     <div
       style="
         width: 100%;
-        height: 8px;
+        height: 10px;
         border-style: solid;
         border-width: 1px;
-        border-color: red;
+        border-color: white;
       "
     >
       <div
-        style="background-color: red; height: 100%"
+        style="background-color: white; height: 100%"
         :style="{ width: progressNext.toString() + '%' }"
       ></div>
     </div>
@@ -34,12 +32,16 @@ import { computed } from "@vue/reactivity";
 
 const styleObject: CSSProperties = {
   position: "fixed",
-  top: "30px",
+  bottom: "30px",
   right: "30px",
-  width: "30px",
+  minWidth: "70px",
+  width: "auto",
+  borderStyle: "solid",
+  borderWidth: "1px",
+  borderColor: "white",
   height: "auto",
   textAlign: "center",
-  fontSize: "12px",
+  fontSize: "14px",
   fontWeight: "bold",
   backgroundColor: "rgba(0,0,0)",
   display: "flex",
@@ -70,12 +72,16 @@ const current = (w: Number): String => {
 
 //returns the number of pixels in the next higher breakpoint from a given current breakpoint string
 const next = (c: String): Number => {
+  // if c is the highest breakpoint return 5000 to prevent error
+  if (c === sorted[sorted.length - 1].size) {
+    return 5000;
+  }
   return sorted[sorted.findIndex((i) => i.size === c) + 1].px || sorted[0].px;
 };
 
 //gives the most recent breakpoint number in pixels
 const cur = (c: String): Number => {
-  if ((c = "none")) {
+  if (c === "none") {
     return 0;
   }
   return sorted[sorted.findIndex((i) => i.size === c)].px || 0;
