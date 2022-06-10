@@ -1,23 +1,22 @@
 <template>
   <div id="hpanel" :style="styleObject">
-    <div id="container">
-      <div
-        id="message"
-        style=""
-        :style="{ color: $devHelp.panelText == 'green' ? 'green' : 'red' }"
-      >
-        {{ width }}
-      </div>
-      <div
-        class="width:100%; height:4px; border-style: solid; border-width: 1px; border-color: red;"
-      >
-        <div
-          style="background: color: red; height:100%"
-          :style="{ width: progressNext.toString() + '%' }"
-        ></div>
-      </div>
-      <slot></slot>
+    <div
+      id="message"
+      style=""
+      :style="{ color: $devHelp.panelText == 'green' ? 'green' : 'red' }"
+    >
+      {{ width }}<br />
+      {{ current(width) }}
     </div>
+    <div
+      class="width:100%; height:4px; border-style: solid; border-width: 1px; border-color: red;"
+    >
+      <div
+        style="background: color: red; height:100%"
+        :style="{ width: progressNext.toString() + '%' }"
+      ></div>
+    </div>
+    <slot></slot>
   </div>
 </template>
 
@@ -34,6 +33,8 @@ const styleObject: CSSProperties = {
   height: "20px",
   fontSize: "10px",
   backgroundColor: "rgba(0,0,0,.5)",
+  display: "flex",
+  flexDirection: "column",
 };
 
 const breakPoints = [
