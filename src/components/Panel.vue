@@ -5,14 +5,21 @@
       style=""
       :style="{ color: $devHelp.panelText == 'green' ? 'green' : 'red' }"
     >
-      {{ width }}<br />
+      {{ width }}
+      <p>▣</p>
       {{ current(width) }}
     </div>
     <div
-      class="width:100%; height:4px; border-style: solid; border-width: 1px; border-color: red;"
+      style="
+        width: 100%;
+        height: 8px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: red;
+      "
     >
       <div
-        style="background: color: red; height:100%"
+        style="background-color: red; height: 100%"
         :style="{ width: progressNext.toString() + '%' }"
       ></div>
     </div>
@@ -29,10 +36,12 @@ const styleObject: CSSProperties = {
   position: "fixed",
   top: "30px",
   right: "30px",
-  width: "20px",
-  height: "20px",
-  fontSize: "10px",
-  backgroundColor: "rgba(0,0,0,.5)",
+  width: "30px",
+  height: "auto",
+  textAlign: "center",
+  fontSize: "12px",
+  fontWeight: "bold",
+  backgroundColor: "rgba(0,0,0)",
   display: "flex",
   flexDirection: "column",
 };
@@ -84,7 +93,7 @@ const progressNext = computed((): Number => {
   }
   const upgrade = next(current(width.value));
   const lastBP = cur(current(width.value));
-  const factor = width.value / Number(upgrade);
+  // return the percentage toward the next breakpoint
   return Math.round(
     ((width.value - Number(lastBP)) / (Number(upgrade) - Number(lastBP))) * 100
   );
