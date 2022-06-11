@@ -1,7 +1,7 @@
 <template>
-  <div :style="styleObject">
-    <div id="breakpointcompass" style="white">
-      <p>{{ width }} {{ injected?.position }} ▣ {{ current(width) }}</p>
+  <div id="breakpointcompass" :style="styleObject">
+    <div id="breakpointcompass_display">
+      <p>{{ width }} ▣ {{ current(width) }}</p>
     </div>
     <div
       style="
@@ -11,13 +11,14 @@
         border-width: 1px;
         border-color: white;
       "
+      id="breakpointcompass_progresscontainer"
     >
       <div
+        id="breakpointcompass_progressbar"
         style="background-color: white; height: 100%"
         :style="{ width: progressNext.toString() + '%' }"
       ></div>
     </div>
-    <slot></slot>
   </div>
 </template>
 
@@ -29,10 +30,15 @@ import { inject } from "vue";
 import { BreakpointSet } from "types/BreakpointCompassOptions";
 import { BreakpointC } from "types/BreakpointC";
 
+// inject provided options
+const injected: BreakpointC | undefined = inject("BreakpointCO");
+
 const styleObject: CSSProperties = {
   position: "fixed",
-  bottom: "30px",
-  right: "30px",
+  top: injected?.position?.includes("t") ? "30px" : "",
+  bottom: injected?.position?.includes("b") ? "30px" : "",
+  right: injected?.position?.includes("r") ? "30px" : "",
+  left: injected?.position?.includes("l") ? "30px" : "",
   minWidth: "70px",
   width: "auto",
   borderStyle: "solid",
@@ -40,14 +46,15 @@ const styleObject: CSSProperties = {
   borderColor: "white",
   height: "auto",
   textAlign: "center",
-  fontSize: "14px",
+  fontSize: "16px",
   fontWeight: "bold",
   backgroundColor: "rgba(0,0,0)",
   display: "flex",
   flexDirection: "column",
 };
 
-const breakPoints: BreakpointSet = [
+//default breakpoints in case of problem with inject ( from tailwind v3)
+const fallbackBreakPoints: BreakpointSet = [
   { name: "d-sm", px: 640 },
   { name: "d-md", px: 768 },
   { name: "d-lg", px: 1024 },
@@ -55,10 +62,10 @@ const breakPoints: BreakpointSet = [
   { name: "d-2xl", px: 1536 },
 ];
 
-const injected: BreakpointC | undefined = inject("BreakpointCO");
+const loadedBreakpoints: BreakpointSet =
+  injected?.breakpointSet || fallbackBreakPoints;
 
-const loadedBreakpoints: BreakpointSet = injected?.breakpointSet || breakPoints;
-
+// make sure the breakpoints are sorted from smallest to largest widths.
 const sorted = loadedBreakpoints.sort((a, b) => a.px - b.px);
 
 // returns current breakpoint as a string from a given width in number of pixels

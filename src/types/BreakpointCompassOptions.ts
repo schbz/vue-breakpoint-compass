@@ -1,6 +1,6 @@
 // This defines the custom settings for the plugin
 export interface BreakpointCompassOptions {
-  breakpoints: BreakpointSet;
+  breakpoints?: BreakpointSet;
   position?: "tl" | "tr" | "bl" | "br";
 }
 

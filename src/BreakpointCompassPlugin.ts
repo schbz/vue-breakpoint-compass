@@ -4,7 +4,7 @@ import { BreakpointC } from "./types/BreakpointC";
 import { BreakpointCompassOptions } from "./types/BreakpointCompassOptions";
 import { breakPointsTailwind } from "./types/BreakpointCompassOptions";
 
-// Creates a new DevHelp. "options" will be what is added to "app.use(DevHelpPlugin, options);"
+// Creates a new "BreakpointC" from options for use in the component via provide/inject
 const createBreakpointOptions = (
   options: BreakpointCompassOptions
 ): BreakpointC => {
@@ -16,13 +16,10 @@ const createBreakpointOptions = (
 
 //Install function used by Vue to register the plugin
 export const BreakpointCompassPlugin: Plugin = {
-  install(app: App, options: BreakpointCompassOptions) {
-    // makes a global devhelp variable available in app as  "$this.devHelp"  "{{ $devHelp }}"
-   // app.config.globalProperties.$BreakpointCOptions = createBreakpointOptions(options);
-
-   // provide options for injection in decendant components
-    app.provide("BreakpointCO", createBreakpointOptions(options));
-    // register Panel as a global component
+  install(app: App, options?: BreakpointCompassOptions) {
+    // provide options for injection in descendant components
+    app.provide("BreakpointCO", createBreakpointOptions(options || {}));
+    // register compass display as a global component
     app.component("BreakpointCompass", BreakpointCompass);
   },
 };
