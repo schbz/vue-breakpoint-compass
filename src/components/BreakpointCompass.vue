@@ -1,7 +1,7 @@
 <template>
   <div id="breakpointcompass" :style="styleObject">
-    <div id="breakpointcompass_display">
-      <p>{{ width }} ▣ {{ current(width) }}</p>
+    <div id="breakpointcompass_display" style="color: white">
+      <p style="padding: 2px 5px">{{ width }} ▣ {{ current(width) }}</p>
     </div>
     <div
       style="

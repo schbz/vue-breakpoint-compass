@@ -1,6 +1,5 @@
 README.md
 tsconfig.json
-yarn.lock
 src
 rollup.config.js
 docs
