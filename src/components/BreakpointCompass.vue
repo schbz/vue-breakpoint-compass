@@ -6,9 +6,9 @@
     <div
       style="
         width: 100%;
-        height: 10px;
+        height: 12px;
         border-style: solid;
-        border-width: 1px;
+        border-width: 2px;
         border-color: white;
       "
       id="breakpointcompass_progresscontainer"
@@ -39,10 +39,10 @@ const styleObject: CSSProperties = {
   bottom: injected?.position?.includes("b") ? "30px" : "",
   right: injected?.position?.includes("r") ? "30px" : "",
   left: injected?.position?.includes("l") ? "30px" : "",
-  minWidth: "70px",
+  minWidth: "90px",
   width: "auto",
   borderStyle: "solid",
-  borderWidth: "1px",
+  borderWidth: "2px",
   borderColor: "white",
   height: "auto",
   textAlign: "center",
