@@ -49,34 +49,34 @@ const styleObject: CSSProperties = {
 };
 
 const breakPoints = [
-  { size: "sm", px: 640 },
-  { size: "md", px: 768 },
-  { size: "lg", px: 1024 },
-  { size: "xl", px: 1280 },
-  { size: "2xl", px: 1536 },
+  { name: "sm", px: 640 },
+  { name: "md", px: 768 },
+  { name: "lg", px: 1024 },
+  { name: "xl", px: 1280 },
+  { name: "2xl", px: 1536 },
 ];
 
 const sorted = breakPoints.sort((a, b) => a.px - b.px);
 
 // returns current breakpoint as a string from a given width in number of pixels
 const current = (w: Number): String => {
-  let size = "none";
+  let name = "none";
   sorted.forEach(function (item) {
     if (w >= item.px) {
-      size = item.size;
+      name = item.name;
     }
-    if (w < item.px) return item.size;
+    if (w < item.px) return item.name;
   });
-  return size;
+  return name;
 };
 
 //returns the number of pixels in the next higher breakpoint from a given current breakpoint string
 const next = (c: String): Number => {
   // if c is the highest breakpoint return 5000 to prevent error
-  if (c === sorted[sorted.length - 1].size) {
+  if (c === sorted[sorted.length - 1].name) {
     return 5000;
   }
-  return sorted[sorted.findIndex((i) => i.size === c) + 1].px || sorted[0].px;
+  return sorted[sorted.findIndex((i) => i.name === c) + 1].px || sorted[0].px;
 };
 
 //gives the most recent breakpoint number in pixels
@@ -84,7 +84,7 @@ const cur = (c: String): Number => {
   if (c === "none") {
     return 0;
   }
-  return sorted[sorted.findIndex((i) => i.size === c)].px || 0;
+  return sorted[sorted.findIndex((i) => i.name === c)].px || 0;
 };
 
 const { width } = useWindowSize();
@@ -92,7 +92,7 @@ const { width } = useWindowSize();
 const progressNext = computed((): Number => {
   // check to see if current breakpoint is the highest, then return 100
   if (
-    sorted.findIndex((i) => i.size === current(width.value)) >=
+    sorted.findIndex((i) => i.name === current(width.value)) >=
     sorted.length - 1
   ) {
     return 100;
