@@ -1,7 +1,8 @@
 {
   "name": "vue-breakpoint-compass",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "main": "dist/index.js",
+  "private": false,
   "license": "MIT",
   "peerDependencies": {
     "vue": "^3.2.20"
@@ -22,5 +23,18 @@
   },
   "dependencies": {
     "@vueuse/core": "^8.6.0"
-  }
+  },
+  "homepage": "https://github.com/schbz/vue-breakpoint-compass",
+  "keywords": [
+    "vue",
+    "vuejs",
+    "vue.js",
+    "plugin",
+    "breakpoints",
+    "devtools",
+    "typescript",
+    "responsiveness",
+    "csstools",
+    "webdesign"
+  ]
 }

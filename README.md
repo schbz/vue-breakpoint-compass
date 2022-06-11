@@ -1,4 +1,4 @@
-# Dev Helper Panel
+# Vue Breakpoint Compass
 
 <p align="center">
     <a href="https://github.com/schbz/vue-breakpoint-compass" target="_blank">
@@ -16,6 +16,13 @@
 </p>
 
 ---
+
+## About
+
+This is a vue 3 based plugin that helps provide the user with more detailed feedback regarding where the current window size fits into any given set of CSS breakpoints. A small display shows the current breakpoint and how far away the nearest breakpoints are in pixel based percentages.
+
+> "Wouldn't it be nice to know exactly how far away the next breakpoints are without having to go into devtools mode and slide the screen width thingy back and forth??!!??"
+> ...-_web developers everywhere_
 
 ## Install
 
@@ -38,9 +45,35 @@ Vue.use(BreakpointCompass,{position: 'bl', breakpointSet: [{name: 'tiny', px: 30
 
 ```
 
+### Valid position settings
+
+- 'tr' top right (default)
+- 'tl' top left
+- 'br' bottom right
+- 'bl' bottom left
+
+### Importable breakpoint presets
+
+- breakPointsTailwind
+- breakPointsQuasar
+- breakPointsBulma
+- breakPointsChakra
+- breakPointsFoundation
+- breakPointsIonic
+- breakPointsMaterialUI
+- breakPointsMaterialize
+- breakPointsSkeleton
+- breakPointsSemanticUI
+
+```javascript
+import breakPointsBootstrapv5 from "vue-breakpoint-compass";
+
+Vue.use(BreakpointCompass, { breakpointSet: breakPointsBootstrapv5 });
+```
+
 ## Usage
 
-Use: (in your local .vue template/component)
+Use: (in your local .vue template/component) during design phase or responsiveness fine-tuning process
 
 ```xml
 <breakpoint-compass/>
