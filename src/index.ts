@@ -1,8 +1,11 @@
-import Panel from './components/Panel.vue'
-import { DevHelpOptions } from './types/DevHelpOptions'
-import { DevHelp } from './types/DevHelp'
-import { DevHelpPlugin } from './DevHelpPlugin'
+import BreakpointCompass from "./components/BreakpointCompass.vue";
+import { BreakpointCompassOptions } from "./types/BreakpointCompassOptions";
+import { BreakpointC } from "./types/BreakpointC";
+import { BreakpointCompassPlugin } from "./BreakpointCompassPlugin";
 
-
-
-export {Panel, DevHelpOptions, DevHelp, DevHelpPlugin}
+export {
+  BreakpointCompass,
+  BreakpointCompassOptions,
+  BreakpointC,
+  BreakpointCompassPlugin,
+};

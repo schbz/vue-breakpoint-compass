@@ -1,8 +1,7 @@
 // This defines the custom settings for the plugin
-export interface DevHelpOptions {
-  text: string;
+export interface BreakpointCompassOptions {
   breakpoints: BreakpointSet;
-  position: string;
+  position?: "tl" | "tr" | "bl" | "br";
 }
 
 interface BreakPoint {
@@ -10,7 +9,7 @@ interface BreakPoint {
   px: number;
 }
 
-interface BreakpointSet extends Array<BreakPoint> {}
+export interface BreakpointSet extends Array<BreakPoint> {}
 
 export const breakPointsTailwind: BreakpointSet = [
   { name: "sm", px: 640 },

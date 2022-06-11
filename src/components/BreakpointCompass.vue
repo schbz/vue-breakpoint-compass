@@ -1,11 +1,7 @@
 <template>
-  <div id="hpanel" :style="styleObject">
-    <div
-      id="message"
-      style=""
-      :style="{ color: $devHelp.panelText == 'white' ? 'white' : 'red' }"
-    >
-      <p>{{ width }} ▣ {{ current(width) }}</p>
+  <div :style="styleObject">
+    <div id="breakpointcompass" style="white">
+      <p>{{ width }} {{ injected?.position }} ▣ {{ current(width) }}</p>
     </div>
     <div
       style="
@@ -29,6 +25,9 @@
 import { CSSProperties } from "vue";
 import { useWindowSize } from "@vueuse/core";
 import { computed } from "@vue/reactivity";
+import { inject } from "vue";
+import { BreakpointSet } from "types/BreakpointCompassOptions";
+import { BreakpointC } from "types/BreakpointC";
 
 const styleObject: CSSProperties = {
   position: "fixed",
@@ -48,15 +47,19 @@ const styleObject: CSSProperties = {
   flexDirection: "column",
 };
 
-const breakPoints = [
-  { name: "sm", px: 640 },
-  { name: "md", px: 768 },
-  { name: "lg", px: 1024 },
-  { name: "xl", px: 1280 },
-  { name: "2xl", px: 1536 },
+const breakPoints: BreakpointSet = [
+  { name: "d-sm", px: 640 },
+  { name: "d-md", px: 768 },
+  { name: "d-lg", px: 1024 },
+  { name: "d-xl", px: 1280 },
+  { name: "d-2xl", px: 1536 },
 ];
 
-const sorted = breakPoints.sort((a, b) => a.px - b.px);
+const injected: BreakpointC | undefined = inject("BreakpointCO");
+
+const loadedBreakpoints: BreakpointSet = injected?.breakpointSet || breakPoints;
+
+const sorted = loadedBreakpoints.sort((a, b) => a.px - b.px);
 
 // returns current breakpoint as a string from a given width in number of pixels
 const current = (w: Number): String => {

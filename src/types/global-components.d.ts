@@ -1,9 +1,9 @@
-import {Panel} from './components/Panel'
+import { BreakpointCompass } from "./components/BreakpointCompass";
 
-export {}
+export {};
 
-declare module '@vue/runtime-core' {
+declare module "@vue/runtime-core" {
   export interface GlobalComponents {
-    DevHelpPanel: typeof Panel,
+    BreakPointCompass: typeof BreakpointCompass;
   }
 }
