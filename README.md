@@ -16,7 +16,6 @@
     <a href="https://unpkg.com/vue-breakpoint-compass"><img src="https://img.badgesize.io/https://unpkg.com/vue-breakpoint-compass.svg?compression=gzip&label=umd:minzip" alt="unpkg umd min:gzip size"</a>
     <a href="https://circleci.com/gh/schbz/vue-breakpoint-compass/tree/master"><img src="https://circleci.com/gh/schbz/vue-breakpoint-compass/tree/master.svg?style=svg" alt="CircleCI"</a>
     <a href="https://github.com/schbz/vue-breakpoint-compass/tree/master/src/types"><img src="https://img.shields.io/npm/types/vue-breakpoint-compass.svg?style=popout" alt="npm type definitions"</a>
-    <a href="https://buymeacoffee.com/schbz"><img src="https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg" alt="Support this project"</a>
     <a href="https://makeapullrequest.com"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"</a>
 </p>
 
@@ -26,8 +25,7 @@
 
 This is a typescript-ready vue 3 plugin created to provide web devs more detailed feedback as to how the current window size fits into any given set of CSS breakpoints. A small display shows the breakpoint name and how far away the nearest breakpoints are in pixel percentages with a progressbar.
 
-> "Wouldn't it be nice to know exactly how far away the nearest breakpoints are without having to go into Chrome devtools mode and slide the screen width thingy back and forth??!!??"
-> .....-_web devs everywhere_
+> "Wouldn't it be nice to know exactly how far away the nearest breakpoints are without having to go into Chrome devtools mode and slide the screen width thingy back and forth??!!??" - _web devs everywhere_
 
 ## Install
 
@@ -40,8 +38,8 @@ npm i vue-breakpoint-compass
 Import: (in your main.js or main.ts)
 
 ```javascript
-// TS users may also want to import BreakpointCompassOptions to type a custom option object.
-import BreakpointCompass from "vue-breakpoint-compass";
+
+import {BreakpointCompass} from "vue-breakpoint-compass";
 
 // for default of top right position and tailwind v3 breakpoints:
 Vue.use(BreakpointCompass);
@@ -55,6 +53,20 @@ Vue.use(BreakpointCompass, {
     { name: "biggest", px: 1200 },
   ],
 });
+
+// TS users may also want to import BreakpointCompassOptions to type a custom option object.
+import {BreakpointCompass, BreakpointCompassOptions} from "vue-breakpoint-compass";
+
+<!-- Options struct: -->
+const MyOptions: BreakpointCompassOptions = {
+  position: "tr",
+  breakpointSet:  [
+    { name: "sm", px: 640 },
+    { name: "md", px: 768 },
+    { name: "lg", px: 1024 },
+    { name: "xl", px: 1280 },
+    { name: "2xl", px: 1536 }]
+  }
 ```
 
 ### Valid position settings
@@ -91,17 +103,7 @@ Use: (in your local .vue template/component) during design phase or responsivene
 ```xml
 <breakpoint-compass/>
 
-
-<!-- Options struct: -->
-
-default options: {
-  position: "tr",
-  breakpointSet:  [
-    { name: "sm", px: 640 },
-    { name: "md", px: 768 },
-    { name: "lg", px: 1024 },
-    { name: "xl", px: 1280 },
-    { name: "2xl", px: 1536 }]
-  }
+// if you're too lazy to remove the plugin before deploying to production you could always use conditional rendering to show only during development
+<breakpoint-compass v-if="devModeActive" />
 
 ```
