@@ -5,7 +5,7 @@
       <img width="200" src="https://raw.githubusercontent.com/schbz/vue-breakpoint-compass/master/docs/VBChero.PNG" alt="insert image here later">
     </a>
     <br>
-    A simple plugin to helps with CSS breakpoints
+    An easy to use plugin that makes responsive design with css breakpoints even easier
 </p>
 
 <p align="center">
@@ -13,16 +13,21 @@
     <a href="https://github.com/schbz/vue-breakpoint-compass/releases"><img src="https://img.shields.io/npm/v/vue-breakpoint-compass.svg" alt="Latest Release"></a>
     <a href="https://github.com/schbz/vue-breakpoint-compass/blob/master/LICENSE.MD"><img src="https://img.shields.io/npm/l/vue-breakpoint-compass.svg" alt="License"></a>
     <img src="https://img.shields.io/badge/dependencies-1-brightgreen.svg" />
+    <a href="https://unpkg.com/vue-breakpoint-compass"><img src="https://img.badgesize.io/https://unpkg.com/vue-breakpoint-compass.svg?compression=gzip&label=umd:minzip" alt="unpkg umd min:gzip size"</a>
+    <a href="https://circleci.com/gh/schbz/vue-breakpoint-compass/tree/master"><img src="https://circleci.com/gh/schbz/vue-breakpoint-compass/tree/master.svg?style=svg" alt="CircleCI"</a>
+    <a href="https://github.com/schbz/vue-breakpoint-compass/tree/master/src/types"><img src="https://img.shields.io/npm/types/vue-breakpoint-compass.svg?style=popout" alt="npm type definitions"</a>
+    <a href="https://buymeacoffee.com/schbz"><img src="https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg" alt="Support this project"</a>
+    <a href="https://makeapullrequest.com"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"</a>
 </p>
 
 ---
 
 ## About
 
-This is a typescript-ready vue 3 plugin created to provide web designers more detailed feedback regarding where the current window size fits into any given set of CSS breakpoints. A small display shows the current breakpoint name and how far away the nearest breakpoints are in pixel percentages with a progressbar.
+This is a typescript-ready vue 3 plugin created to provide web devs more detailed feedback as to how the current window size fits into any given set of CSS breakpoints. A small display shows the breakpoint name and how far away the nearest breakpoints are in pixel percentages with a progressbar.
 
-> "Wouldn't it be nice to know exactly how far away the nearest breakpoints are without having to go into devtools mode and slide the screen width thingy back and forth??!!??"
-> .....-_web developers everywhere_
+> "Wouldn't it be nice to know exactly how far away the nearest breakpoints are without having to go into Chrome devtools mode and slide the screen width thingy back and forth??!!??"
+> .....-_web devs everywhere_
 
 ## Install
 
