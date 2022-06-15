@@ -2,30 +2,27 @@
   <div id="breakpointcompass" :style="styleObject">
     <div
       id="breakpointcompass_display"
-      style="color: black; display: flex; flex-direction: column; height: auto"
+      style="
+        color: black;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        padding: 2px;
+      "
     >
       <div
         style="
           display: flex;
           flex-direction: row;
-          justify-content: space-between;
+          justify-content: space-evenly;
+          padding: 3px;
         "
       >
-        <p
-          style="padding: 2px 1px; font-size: 4px; text-align: right"
-          v-show="prevBP !== NameFromPixels(width)"
-        >
-          {{ prevBP }}
-        </p>
-        <p style="padding: 2px 1px; font-size: 16px">
+        <p style="font-size: 20px; margin: 0; padding: 2px">
           {{ NameFromPixels(width) }}
         </p>
-        <p
-          style="padding: 2px 1px; font-size: 4px; text-align: right"
-          v-show="nextBP !== NameFromPixels(width)"
-        >
-          {{ nextBP }}
-        </p>
+        🧭
+        <p style="font-size: 20px; margin: 0; padding: 2px">{{ width }}</p>
       </div>
       <div
         style="
@@ -33,44 +30,92 @@
           flex-direction: row;
           justify-content: space-between;
         "
+      ></div>
+      <div
+        style="
+          width: full;
+          height: 25px;
+          border-left: 2px solid red;
+          border-right: 2px solid red;
+          background-color: skyblue;
+
+          position: relative;
+        "
+        id="breakpointcompass_progresscontainer"
       >
         <p
-          style="padding: 2px 1px font-size: 4px; text-align:right;"
-          v-show="prevPx !== width"
+          style="
+            font-size: 10px;
+            margin: 0;
+            color: red;
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            font-weight: 300;
+          "
+          v-show="prevBP != 'none'"
+        >
+          &lt; {{ prevBP }}
+        </p>
+        <p
+          style="
+            font-size: 10px;
+            color: red;
+            position: absolute;
+            bottom: 1px;
+            margin: 0;
+            left: 1px;
+            font-weight: 300;
+          "
+          v-show="prevPx !== width && prevPx !== 0"
         >
           {{ prevPx }}
         </p>
-        <p style="padding: 2px 1px">{{ width }}</p>
-        <p
-          style="padding: 2px 1px; text-align: right"
-          v-show="nextBP !== NameFromPixels(width)"
+
+        <div
+          class="font-weight: 100; color: red; position: absolute; right 2px; bottom: 2px; display: flex; flex-direction: column;"
         >
-          {{ nextPx }}
-        </p>
+          <p
+            style="
+              font-size: 10px;
+              color: red;
+              margin: 0;
+              position: absolute;
+              top: 1px;
+              right: 1px;
+              font-weight: 300;
+            "
+            v-show="nextBP != NameFromPixels(width)"
+          >
+            {{ nextBP }} >
+          </p>
+          <p
+            style="
+              font-size: 10px;
+              margin: 0;
+              color: red;
+              position: absolute;
+              bottom: 1px;
+              right: 1px;
+              font-weight: 300;
+            "
+            v-show="nextBP != NameFromPixels(width)"
+          >
+            {{ nextPx }}
+          </p>
+        </div>
+        <div
+          id="breakpointcompass_progressbar"
+          style="
+            background-color: #ff0000bb;
+            height: 100%;
+            width: 3px;
+            position: absolute;
+            top: 0px;
+          "
+          :style="{ left: progressNext.toString() + '%' }"
+        ></div>
       </div>
-    </div>
-    <div
-      style="
-        width: full;
-        height: 20px;
-        border-style: solid;
-        border-width: 2px;
-        border-color: gold;
-        position: relative;
-      "
-      id="breakpointcompass_progresscontainer"
-    >
-      <div
-        id="breakpointcompass_progressbar"
-        style="
-          background-color: #ff0000bb;
-          height: 100%;
-          width: 3px;
-          position: absolute;
-          top: 0px;
-        "
-        :style="{ left: progressNext.toString() + '%' }"
-      ></div>
     </div>
   </div>
 </template>
@@ -92,18 +137,19 @@ const styleObject: CSSProperties = {
   bottom: injected?.position?.includes("b") ? "30px" : "",
   right: injected?.position?.includes("r") ? "30px" : "",
   left: injected?.position?.includes("l") ? "30px" : "",
-  minWidth: "90px",
+  minWidth: "110px",
   width: "auto",
   borderStyle: "solid",
   borderWidth: "2px",
   borderColor: "goldenrod",
   height: "auto",
   textAlign: "center",
-  fontSize: "6px",
+  fontSize: "12px",
   fontWeight: "bold",
   backgroundColor: "gold",
   display: "flex",
   flexDirection: "column",
+  borderRadius: "5px",
 };
 
 //default breakpoints in case of problem with inject ( from tailwind v3)
@@ -153,11 +199,11 @@ const prev = (c: String): Number => {
 const { width } = useWindowSize();
 
 const nextBP = computed((): String => {
-  return NameFromPixels(Number(nextPx));
+  return NameFromPixels(next(NameFromPixels(width.value)));
 });
 
 const prevBP = computed((): String => {
-  return NameFromPixels(Number(prevPx) - 5);
+  return NameFromPixels(Number(prev(NameFromPixels(width.value))) - 2);
 });
 
 const nextPx = computed((): Number => {
@@ -178,7 +224,10 @@ const progressNext = computed((): Number => {
   }
   // return the percentage toward the next breakpoint
   return Math.round(
-    ((width.value - Number(prevPx)) / (Number(nextPx) - Number(prevPx))) * 100
+    ((width.value - Number(prev(NameFromPixels(width.value)))) /
+      (Number(next(NameFromPixels(width.value))) -
+        Number(prev(NameFromPixels(width.value))))) *
+      100
   );
 });
 </script>
