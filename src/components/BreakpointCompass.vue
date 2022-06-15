@@ -1,22 +1,75 @@
 <template>
   <div id="breakpointcompass" :style="styleObject">
-    <div id="breakpointcompass_display" style="color: white">
-      <p style="padding: 2px 5px">{{ width }} ▣ {{ current(width) }}</p>
+    <div
+      id="breakpointcompass_display"
+      style="color: black; display: flex; flex-direction: column; height: auto"
+    >
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        "
+      >
+        <p
+          style="padding: 2px 1px; font-size: 4px; text-align: right"
+          v-show="prevBP !== NameFromPixels(width)"
+        >
+          {{ prevBP }}
+        </p>
+        <p style="padding: 2px 1px; font-size: 16px">
+          {{ NameFromPixels(width) }}
+        </p>
+        <p
+          style="padding: 2px 1px; font-size: 4px; text-align: right"
+          v-show="nextBP !== NameFromPixels(width)"
+        >
+          {{ nextBP }}
+        </p>
+      </div>
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        "
+      >
+        <p
+          style="padding: 2px 1px font-size: 4px; text-align:right;"
+          v-show="prevPx !== width"
+        >
+          {{ prevPx }}
+        </p>
+        <p style="padding: 2px 1px">{{ width }}</p>
+        <p
+          style="padding: 2px 1px; text-align: right"
+          v-show="nextBP !== NameFromPixels(width)"
+        >
+          {{ nextPx }}
+        </p>
+      </div>
     </div>
     <div
       style="
-        width: 100%;
-        height: 12px;
+        width: full;
+        height: 20px;
         border-style: solid;
         border-width: 2px;
-        border-color: white;
+        border-color: gold;
+        position: relative;
       "
       id="breakpointcompass_progresscontainer"
     >
       <div
         id="breakpointcompass_progressbar"
-        style="background-color: white; height: 100%"
-        :style="{ width: progressNext.toString() + '%' }"
+        style="
+          background-color: #ff0000bb;
+          height: 100%;
+          width: 3px;
+          position: absolute;
+          top: 0px;
+        "
+        :style="{ left: progressNext.toString() + '%' }"
       ></div>
     </div>
   </div>
@@ -43,12 +96,12 @@ const styleObject: CSSProperties = {
   width: "auto",
   borderStyle: "solid",
   borderWidth: "2px",
-  borderColor: "white",
+  borderColor: "goldenrod",
   height: "auto",
   textAlign: "center",
-  fontSize: "16px",
+  fontSize: "6px",
   fontWeight: "bold",
-  backgroundColor: "rgba(0,0,0)",
+  backgroundColor: "gold",
   display: "flex",
   flexDirection: "column",
 };
@@ -69,7 +122,7 @@ const loadedBreakpoints: BreakpointSet =
 const sorted = loadedBreakpoints.sort((a, b) => a.px - b.px);
 
 // returns current breakpoint as a string from a given width in number of pixels
-const current = (w: Number): String => {
+const NameFromPixels = (w: Number): String => {
   let name = "none";
   sorted.forEach(function (item) {
     if (w >= item.px) {
@@ -80,7 +133,7 @@ const current = (w: Number): String => {
   return name;
 };
 
-//returns the number of pixels in the next higher breakpoint from a given current breakpoint string
+//returns the number of pixels in the next higher breakpoint from a given NameFromPixels breakpoint string
 const next = (c: String): Number => {
   // if c is the highest breakpoint return 5000 to prevent error
   if (c === sorted[sorted.length - 1].name) {
@@ -90,7 +143,7 @@ const next = (c: String): Number => {
 };
 
 //gives the most recent breakpoint number in pixels
-const cur = (c: String): Number => {
+const prev = (c: String): Number => {
   if (c === "none") {
     return 0;
   }
@@ -99,19 +152,33 @@ const cur = (c: String): Number => {
 
 const { width } = useWindowSize();
 
+const nextBP = computed((): String => {
+  return NameFromPixels(Number(nextPx));
+});
+
+const prevBP = computed((): String => {
+  return NameFromPixels(Number(prevPx) - 5);
+});
+
+const nextPx = computed((): Number => {
+  return next(NameFromPixels(width.value));
+});
+
+const prevPx = computed((): Number => {
+  return prev(NameFromPixels(width.value));
+});
+
 const progressNext = computed((): Number => {
   // check to see if current breakpoint is the highest, then return 100
   if (
-    sorted.findIndex((i) => i.name === current(width.value)) >=
+    sorted.findIndex((i) => i.name === NameFromPixels(width.value)) >=
     sorted.length - 1
   ) {
     return 100;
   }
-  const upgrade = next(current(width.value));
-  const lastBP = cur(current(width.value));
   // return the percentage toward the next breakpoint
   return Math.round(
-    ((width.value - Number(lastBP)) / (Number(upgrade) - Number(lastBP))) * 100
+    ((width.value - Number(prevPx)) / (Number(nextPx) - Number(prevPx))) * 100
   );
 });
 </script>

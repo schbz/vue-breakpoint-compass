@@ -1,6 +1,6 @@
 {
   "name": "vue-breakpoint-compass",
-  "version": "0.4.2",
+  "version": "0.4.4",
   "description": "An easy to use plugin that makes responsive design with css breakpoints even easier.",
   "main": "dist/index.js",
   "private": false,

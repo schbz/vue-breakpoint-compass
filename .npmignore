@@ -4,3 +4,4 @@ src
 rollup.config.js
 docs
 *.tgz
+testingplace
