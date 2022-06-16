@@ -39,13 +39,13 @@ Import: (in your main.js or main.ts)
 
 ```javascript
 
-import {BreakpointCompass} from "vue-breakpoint-compass";
+import {BreakpointCompassPlugin} from "vue-breakpoint-compass";
 
 // for default of top right position and tailwind v3 breakpoints:
-Vue.use(BreakpointCompass);
+Vue.use(BreakpointCompassPlugin);
 
 //custom options example (breakpoints can be in any order but must be in correct object array format)
-Vue.use(BreakpointCompass, {
+Vue.use(BreakpointCompassPlugin, {
   position: "bl",
   breakpointSet: [
     { name: "tiny", px: 300 },
@@ -55,7 +55,7 @@ Vue.use(BreakpointCompass, {
 });
 
 // TS users may also want to import BreakpointCompassOptions to type a custom option object.
-import {BreakpointCompass, BreakpointCompassOptions} from "vue-breakpoint-compass";
+import {BreakpointCompassPlugin, BreakpointCompassOptions} from "vue-breakpoint-compass";
 
 <!-- Options struct: -->
 const MyOptions: BreakpointCompassOptions = {
@@ -93,7 +93,7 @@ const MyOptions: BreakpointCompassOptions = {
 ```javascript
 import breakPointsBootstrapv5 from "vue-breakpoint-compass";
 
-Vue.use(BreakpointCompass, { breakpointSet: breakPointsBootstrapv5 });
+Vue.use(BreakpointCompassPlugin, { breakpointSet: breakPointsBootstrapv5 });
 ```
 
 ## Usage
