@@ -24,7 +24,8 @@
 ## About
 
 This is a typescript-ready vue 3 plugin created to provide web devs more detailed feedback as to how the current window size fits into any given set of CSS breakpoints. A small display shows the breakpoint name and how far away the nearest breakpoints are in pixel percentages with a progressbar.
-[Demo](https:/skylrs.com/apps/vbcdemo)
+
+[Demo](https://skylrs.com/apps/vbcdemo)
 
 > "Wouldn't it be nice to know exactly how far away the nearest breakpoints are without having to go into Chrome devtools mode and slide the screen width thingy back and forth??!!??" - _web devs everywhere_
 
