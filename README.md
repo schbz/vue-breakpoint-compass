@@ -2,7 +2,7 @@
 
 <p align="center">
     <a href="https://github.com/schbz/vue-breakpoint-compass" target="_blank">
-      <img width="200" src="https://raw.githubusercontent.com/schbz/vue-breakpoint-compass/master/docs/VBChero.PNG" alt="insert image here later">
+      <img width="200" src="https://raw.githubusercontent.com/schbz/vue-breakpoint-compass/master/docs/Animation.gif" alt="Example image">
     </a>
     <br>
     An easy to use plugin that makes responsive design with css breakpoints even easier

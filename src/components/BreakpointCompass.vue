@@ -21,7 +21,8 @@
         <p style="font-size: 20px; margin: 0; padding: 2px">
           {{ NameFromPixels(width) }}
         </p>
-        🧭
+        <p style="font-size: 20px; margin: 1px 5px;">🧭</p>
+        
         <p style="font-size: 20px; margin: 0; padding: 2px">{{ width }}</p>
       </div>
       <div
@@ -35,9 +36,10 @@
         style="
           width: full;
           height: 25px;
+          padding: 0;
           border-left: 2px solid red;
           border-right: 2px solid red;
-          background-color: skyblue;
+          background-color: lightskyblue;
 
           position: relative;
         "
@@ -47,11 +49,12 @@
           style="
             font-size: 10px;
             margin: 0;
+            padding: 0;
             color: red;
             position: absolute;
             top: 1px;
             left: 1px;
-            font-weight: 300;
+            font-weight: 200;
           "
           v-show="prevBP != 'none'"
         >
@@ -61,11 +64,12 @@
           style="
             font-size: 10px;
             color: red;
+            padding: 0;
             position: absolute;
             bottom: 1px;
             margin: 0;
             left: 1px;
-            font-weight: 300;
+            font-weight: 200;
           "
           v-show="prevPx !== width && prevPx !== 0"
         >
@@ -80,10 +84,11 @@
               font-size: 10px;
               color: red;
               margin: 0;
+              padding: 0;
               position: absolute;
               top: 1px;
               right: 1px;
-              font-weight: 300;
+              font-weight: 200;
             "
             v-show="nextBP != NameFromPixels(width)"
           >
@@ -93,11 +98,12 @@
             style="
               font-size: 10px;
               margin: 0;
+              padding: 0;
               color: red;
               position: absolute;
               bottom: 1px;
               right: 1px;
-              font-weight: 300;
+              font-weight: 200;
             "
             v-show="nextBP != NameFromPixels(width)"
           >
