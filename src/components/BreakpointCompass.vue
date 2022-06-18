@@ -15,15 +15,15 @@
           display: flex;
           flex-direction: row;
           justify-content: space-evenly;
-          padding: 3px;
+          padding: 1px;
         "
       >
-        <p style="font-size: 20px; margin: 0; padding: 2px">
+        <p style="font-size: 20px; margin: 0; padding: 1px">
           {{ NameFromPixels(width) }}
         </p>
-        <p style="font-size: 20px; margin: 1px 5px;">🧭</p>
-        
-        <p style="font-size: 20px; margin: 0; padding: 2px">{{ width }}</p>
+        <p style="font-size: 20px; margin: 1px 3px">🧭</p>
+
+        <p style="font-size: 20px; margin: 0; padding: 1px">{{ width }}</p>
       </div>
       <div
         style="
@@ -35,7 +35,7 @@
       <div
         style="
           width: full;
-          height: 25px;
+          height: 30px;
           padding: 0;
           border-left: 2px solid red;
           border-right: 2px solid red;
@@ -47,14 +47,14 @@
       >
         <p
           style="
-            font-size: 10px;
+            font-size: 12px;
             margin: 0;
             padding: 0;
             color: red;
             position: absolute;
-            top: 1px;
+            top: 0px;
             left: 1px;
-            font-weight: 200;
+            font-weight: 500;
           "
           v-show="prevBP != 'none'"
         >
@@ -62,54 +62,50 @@
         </p>
         <p
           style="
-            font-size: 10px;
+            font-size: 12px;
             color: red;
             padding: 0;
             position: absolute;
-            bottom: 1px;
+            bottom: 0px;
             margin: 0;
             left: 1px;
-            font-weight: 200;
+            font-weight: 500;
           "
           v-show="prevPx !== width && prevPx !== 0"
         >
           {{ prevPx }}
         </p>
 
-        <div
-          class="font-weight: 100; color: red; position: absolute; right 2px; bottom: 2px; display: flex; flex-direction: column;"
+        <p
+          style="
+            font-size: 12px;
+            color: red;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 0px;
+            right: 1px;
+            font-weight: 500;
+          "
+          v-show="nextBP != NameFromPixels(width)"
         >
-          <p
-            style="
-              font-size: 10px;
-              color: red;
-              margin: 0;
-              padding: 0;
-              position: absolute;
-              top: 1px;
-              right: 1px;
-              font-weight: 200;
-            "
-            v-show="nextBP != NameFromPixels(width)"
-          >
-            {{ nextBP }} >
-          </p>
-          <p
-            style="
-              font-size: 10px;
-              margin: 0;
-              padding: 0;
-              color: red;
-              position: absolute;
-              bottom: 1px;
-              right: 1px;
-              font-weight: 200;
-            "
-            v-show="nextBP != NameFromPixels(width)"
-          >
-            {{ nextPx }}
-          </p>
-        </div>
+          {{ nextBP }} >
+        </p>
+        <p
+          style="
+            font-size: 12px;
+            margin: 0;
+            padding: 0;
+            color: red;
+            position: absolute;
+            bottom: 0px;
+            right: 1px;
+            font-weight: 500;
+          "
+          v-show="nextBP != NameFromPixels(width)"
+        >
+          {{ nextPx }}
+        </p>
         <div
           id="breakpointcompass_progressbar"
           style="
@@ -143,7 +139,7 @@ const styleObject: CSSProperties = {
   bottom: injected?.position?.includes("b") ? "30px" : "",
   right: injected?.position?.includes("r") ? "30px" : "",
   left: injected?.position?.includes("l") ? "30px" : "",
-  minWidth: "110px",
+  minWidth: "150px",
   width: "auto",
   borderStyle: "solid",
   borderWidth: "2px",
