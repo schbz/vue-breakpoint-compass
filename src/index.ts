@@ -1,8 +1,11 @@
 import BreakpointCompass from "./components/BreakpointCompass.vue";
+import { BreakpointCompassOptions, BreakpointSet, BreakPoint } from "types/BreakpointCompassOptions";
 import {
-  BreakpointCompassOptions,
+  breakPointsBootstrapv3,
+  breakPointsBootstrapv4,
   breakPointsBootstrapv5,
   breakPointsTailwind,
+  breakPointsWindicss,
   breakPointsSkeleton,
   breakPointsBulma,
   breakPointsChakra,
@@ -12,15 +15,21 @@ import {
   breakPointsMaterialize,
   breakPointsQuasar,
   breakPointsSemanticUI,
-} from "./types/BreakpointCompassOptions";
+} from "./presets";
+
 import { BreakpointCompassPlugin } from "./BreakpointCompassPlugin";
 
 export {
+  BreakPoint,
+  BreakpointSet,
   BreakpointCompass,
   BreakpointCompassOptions,
   BreakpointCompassPlugin,
+  breakPointsBootstrapv3,
+  breakPointsBootstrapv4,
   breakPointsBootstrapv5,
   breakPointsTailwind,
+  breakPointsWindicss,
   breakPointsSkeleton,
   breakPointsBulma,
   breakPointsChakra,

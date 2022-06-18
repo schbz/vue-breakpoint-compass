@@ -63,6 +63,7 @@ import {BreakpointCompassPlugin, BreakpointCompassOptions} from "vue-breakpoint-
 const MyOptions: BreakpointCompassOptions = {
   position: "tr",
   breakpointSet:  [
+    // class name and associated min screen width in object format for each breakpoint
     { name: "sm", px: 640 },
     { name: "md", px: 768 },
     { name: "lg", px: 1024 },
@@ -81,6 +82,9 @@ const MyOptions: BreakpointCompassOptions = {
 ### Importable breakpoint presets
 
 - breakPointsBootstrapv5
+- breakPointsBootstrapv4
+- breakPointsBootstrapv3
+- breakPointsWindicss
 - breakPointsTailwind
 - breakPointsQuasar
 - breakPointsBulma
