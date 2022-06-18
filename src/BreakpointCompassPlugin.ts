@@ -2,7 +2,7 @@ import { App, Plugin } from "vue";
 import BreakpointCompass from "./components/BreakpointCompass.vue";
 import { BreakpointC } from "./types/BreakpointC";
 import { BreakpointCompassOptions } from "./types/BreakpointCompassOptions";
-import { breakPointsTailwind } from "./types/BreakpointCompassOptions";
+import { breakPointsTailwind } from "./presets";
 
 // Creates a new "BreakpointC" from options for use in the component via provide/inject
 const createBreakpointOptions = (
