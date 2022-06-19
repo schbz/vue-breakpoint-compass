@@ -27,12 +27,24 @@ A typescript-ready vue 3 plugin created to provide web devs more detailed feedba
 
 [Demo](https://skylrs.com/apps/vbcdemo)
 
-> "Wouldn't it be nice to know my current breakpoint and exactly how far away the next breakpoints on my display without resizing the browser window or opening devtools?!" - _web devs everywhere_
+> "Wouldn't it be nice to know my current breakpoint and exactly how far away the next breakpoints on my display are without resizing the browser window or opening devtools?!" - _web devs everywhere_
 
 ## Install
 
 ```bash
 npm i vue-breakpoint-compass
+```
+
+or
+
+```bash
+yarn add vue-breakpoint-compass
+```
+
+or
+
+```bash
+pnpm add vue-breakpoint-compass
 ```
 
 ## Setup
@@ -42,12 +54,13 @@ Import: (in your main.js or main.ts)
 ```javascript
 
 import {BreakpointCompassPlugin} from "vue-breakpoint-compass";
-
+import { createApp } from 'vue'
+const app = createApp({})
 // for default of top right position and tailwind v3 breakpoints:
-Vue.use(BreakpointCompassPlugin);
+app.use(BreakpointCompassPlugin);
 
 //custom options example (breakpoints can be in any order but must be in correct object array format)
-Vue.use(BreakpointCompassPlugin, {
+app.use(BreakpointCompassPlugin, {
   position: "bl",
   breakpointSet: [
     { name: "tiny", px: 300 },
@@ -81,25 +94,25 @@ const MyOptions: BreakpointCompassOptions = {
 
 ### Importable breakpoint presets
 
-- breakPointsBootstrapv5
-- breakPointsBootstrapv4
-- breakPointsBootstrapv3
-- breakPointsWindicss
-- breakPointsTailwind
-- breakPointsQuasar
-- breakPointsBulma
-- breakPointsChakra
-- breakPointsFoundation
-- breakPointsIonic
-- breakPointsMaterialUI
-- breakPointsMaterialize
-- breakPointsSkeleton
-- breakPointsSemanticUI
+- breakpointsBootstrapv5
+- breakpointsBootstrapv4
+- breakpointsBootstrapv3
+- breakpointsWindicss
+- breakpointsTailwind
+- breakpointsQuasar
+- breakpointsBulma
+- breakpointsChakra
+- breakpointsFoundation
+- breakpointsIonic
+- breakpointsMaterialUI
+- breakpointsMaterialize
+- breakpointsSkeleton
+- breakpointsSemanticUI
 
 ```javascript
-import breakPointsBootstrapv5 from "vue-breakpoint-compass";
+import breakpointsBootstrapv5 from "vue-breakpoint-compass";
 
-Vue.use(BreakpointCompassPlugin, { breakpointSet: breakPointsBootstrapv5 });
+app.use(BreakpointCompassPlugin, { breakpointSet: breakpointsBootstrapv5 });
 ```
 
 ## Usage
