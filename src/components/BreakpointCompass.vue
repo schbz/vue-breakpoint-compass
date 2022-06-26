@@ -1,5 +1,5 @@
 <template>
-  <div id="breakpointcompass" :style="styleObject">
+  <div ref="el" id="breakpointcompass" :style="[styleObject, style]">
     <div
       id="breakpointcompass_display"
       style="
@@ -129,9 +129,13 @@ import { computed } from "@vue/reactivity";
 import { inject } from "vue";
 import { BreakpointSet } from "types/BreakpointCompassOptions";
 import { BreakpointC } from "types/BreakpointC";
+import { ref } from "vue";
+import { useDraggable } from "@vueuse/core";
 
 // inject provided options
 const injected: BreakpointC | undefined = inject("BreakpointCO");
+
+const el = ref<HTMLElement | null>(null);
 
 const styleObject: CSSProperties = {
   position: "fixed",
@@ -153,6 +157,8 @@ const styleObject: CSSProperties = {
   flexDirection: "column",
   borderRadius: "5px",
 };
+
+const { x, y, style } = useDraggable(el, { preventDefault: true });
 
 //default breakpoints in case of problem with inject ( from tailwind v3)
 const fallbackBreakPoints: BreakpointSet = [
