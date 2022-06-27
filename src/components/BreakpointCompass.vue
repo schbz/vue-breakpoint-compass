@@ -125,7 +125,7 @@
 <script setup lang="ts">
 import { CSSProperties } from "vue";
 import { useWindowSize } from "@vueuse/core";
-import { computed } from "@vue/reactivity";
+import { computed, unref } from "@vue/reactivity";
 import { inject } from "vue";
 import { BreakpointSet } from "types/BreakpointCompassOptions";
 import { BreakpointC } from "types/BreakpointC";
@@ -137,12 +137,10 @@ const injected: BreakpointC | undefined = inject("BreakpointCO");
 
 const el = ref<HTMLElement | null>(null);
 
+const { width, height } = useWindowSize();
+
 const styleObject: CSSProperties = {
   position: "fixed",
-  top: injected?.position?.includes("t") ? "30px" : "",
-  bottom: injected?.position?.includes("b") ? "30px" : "",
-  right: injected?.position?.includes("r") ? "30px" : "",
-  left: injected?.position?.includes("l") ? "30px" : "",
   minWidth: "150px",
   width: "auto",
   borderStyle: "solid",
@@ -156,9 +154,16 @@ const styleObject: CSSProperties = {
   display: "flex",
   flexDirection: "column",
   borderRadius: "5px",
+  cursor: "move",
 };
 
-const { x, y, style } = useDraggable(el, { preventDefault: true });
+const initX = injected?.position?.includes("l") ? 30 : unref(width) - 200;
+const initY = injected?.position?.includes("t") ? 30 : unref(height) - 80;
+
+const { x, y, style } = useDraggable(el, {
+  preventDefault: true,
+  initialValue: { x: initX, y: initY },
+});
 
 //default breakpoints in case of problem with inject ( from tailwind v3)
 const fallbackBreakPoints: BreakpointSet = [
@@ -203,8 +208,6 @@ const prev = (c: String): Number => {
   }
   return sorted[sorted.findIndex((i) => i.name === c)].px || 0;
 };
-
-const { width } = useWindowSize();
 
 const nextBP = computed((): String => {
   return NameFromPixels(next(NameFromPixels(width.value)));
