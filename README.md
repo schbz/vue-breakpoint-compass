@@ -31,7 +31,6 @@ A typescript-ready vue 3 plugin created to provide devs with more detailed feedb
 
 - Includes over a dozen importable breakpoint sets from popular web frameworks
 - Add your own custom breakpoint set, or modify existing sets
-
 - Breakpoint set objects can be used in other components via inject
 - Draggable interface
 
