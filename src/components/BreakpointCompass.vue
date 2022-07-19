@@ -18,12 +18,12 @@
           padding: 1px;
         "
       >
-        <p style="font-size: 20px; margin: 0; padding: 1px">
+        <p style="font-size: 25px; margin: 0; padding: 1px">
           {{ NameFromPixels(width) }}
         </p>
         <p style="font-size: 20px; margin: 1px 3px">🧭</p>
 
-        <p style="font-size: 20px; margin: 0; padding: 1px">{{ width }}</p>
+        <p style="font-size: 25px; margin: 0; padding: 1px">{{ width }}</p>
       </div>
       <div
         style="
@@ -50,7 +50,7 @@
             font-size: 12px;
             margin: 0;
             padding: 0;
-            color: red;
+            color: #333;
             position: absolute;
             top: 0px;
             left: 1px;
@@ -63,7 +63,7 @@
         <p
           style="
             font-size: 12px;
-            color: red;
+            color: #333;
             padding: 0;
             position: absolute;
             bottom: 0px;
@@ -71,7 +71,7 @@
             left: 1px;
             font-weight: 500;
           "
-          v-show="prevPx !== width && prevPx !== 0"
+          v-show="prevPx !== 0"
         >
           {{ prevPx }}
         </p>
@@ -79,7 +79,7 @@
         <p
           style="
             font-size: 12px;
-            color: red;
+            color: #333;
             margin: 0;
             padding: 0;
             position: absolute;
@@ -96,7 +96,7 @@
             font-size: 12px;
             margin: 0;
             padding: 0;
-            color: red;
+            color: #333;
             position: absolute;
             bottom: 0px;
             right: 1px;

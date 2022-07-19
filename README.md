@@ -15,7 +15,6 @@
     <img src="https://img.shields.io/badge/dependencies-1-brightgreen.svg" />
     <a href="https://unpkg.com/vue-breakpoint-compass"><img src="https://img.badgesize.io/https://unpkg.com/vue-breakpoint-compass.svg?compression=gzip&label=umd:minzip" alt="unpkg umd min:gzip size"</a>
     <a href="https://circleci.com/gh/schbz/vue-breakpoint-compass/tree/master"><img src="https://circleci.com/gh/schbz/vue-breakpoint-compass/tree/master.svg?style=svg" alt="CircleCI"</a>
-    <a href="https://github.com/schbz/vue-breakpoint-compass/tree/master/src/types"><img src="https://img.shields.io/npm/types/vue-breakpoint-compass.svg?style=popout" alt="npm type definitions"</a>
     <a href="https://makeapullrequest.com"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"</a>
 </p>
 
@@ -23,7 +22,7 @@
 
 ## About
 
-A typescript-ready vue 3 plugin created to provide devs with more detailed feedback as to how the current window size fits into any given set of CSS breakpoints. A small display shows the breakpoint name and how far away the nearest breakpoints are in pixel percentages with a progressbar.
+A Vue 3 plugin created to provide devs with more detailed feedback as to how the current window size fits into any given set of CSS breakpoints. A small display shows the breakpoint name and how far away the nearest breakpoints are in pixel percentages with a progressbar.
 
 [Demo](https://skylrs.com/apps/vbcdemo)
 
