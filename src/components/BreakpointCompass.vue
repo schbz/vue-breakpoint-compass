@@ -45,6 +45,21 @@
         "
         id="breakpointcompass_progresscontainer"
       >
+        <div
+          v-for="(x, i) in gauge"
+          :key="i"
+          style="
+            width: 1px;
+            opacity: 0.5;
+            background-color: #333333;
+            position: absolute;
+            bottom: 0px;
+          "
+          :style="{
+            left: ((i * 25) / 4).toString() + '%',
+            height: x.toString() + '%',
+          }"
+        ></div>
         <p
           style="
             font-size: 12px;
@@ -62,7 +77,7 @@
         </p>
         <p
           style="
-            font-size: 12px;
+            font-size: 14px;
             color: #333;
             padding: 0;
             position: absolute;
@@ -93,7 +108,7 @@
         </p>
         <p
           style="
-            font-size: 12px;
+            font-size: 14px;
             margin: 0;
             padding: 0;
             color: #333;
@@ -136,6 +151,10 @@ import { useDraggable } from "@vueuse/core";
 const injected: BreakpointC | undefined = inject("BreakpointCO");
 
 const el = ref<HTMLElement | null>(null);
+
+const gauge = ref([
+  0, 15, 25, 15, 50, 15, 25, 15, 75, 15, 25, 15, 50, 15, 25, 15, 0,
+]);
 
 const { width, height } = useWindowSize();
 
