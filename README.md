@@ -5,7 +5,7 @@
       <img width="200" src="https://raw.githubusercontent.com/schbz/vue-breakpoint-compass/master/docs/Animation.gif" alt="Example image">
     </a>
     <br>
-    An easy to use plugin that makes responsive design with css breakpoints even easier
+    A simple plugin that makes responsive design with css breakpoints a bit more intuitive
 </p>
 
 <p align="center">
@@ -32,23 +32,12 @@ A Vue 3 plugin created to provide devs with more detailed feedback as to how the
 - Add your own custom breakpoint set, or modify existing sets
 - Breakpoint set objects can be used in other components via inject
 - Draggable interface
+- UI inspired by compass from Minecraft
 
 ## Install
 
 ```bash
 npm i vue-breakpoint-compass
-```
-
-or
-
-```bash
-yarn add vue-breakpoint-compass
-```
-
-or
-
-```bash
-pnpm add vue-breakpoint-compass
 ```
 
 ## Setup

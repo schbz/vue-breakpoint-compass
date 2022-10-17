@@ -153,7 +153,7 @@ const injected: BreakpointC | undefined = inject("BreakpointCO");
 const el = ref<HTMLElement | null>(null);
 
 const gauge = ref([
-  0, 15, 25, 15, 50, 15, 25, 15, 75, 15, 25, 15, 50, 15, 25, 15, 0,
+  0, 15, 35, 15, 50, 15, 35, 15, 75, 15, 35, 15, 50, 15, 35, 15, 0,
 ]);
 
 const { width, height } = useWindowSize();
