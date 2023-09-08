@@ -18,12 +18,12 @@
           padding: 1px;
         "
       >
-        <p style="font-size: 20px; margin: 0; padding: 1px">
+        <p style="font-size: 25px; margin: 0; padding: 1px">
           {{ NameFromPixels(width) }}
         </p>
         <p style="font-size: 20px; margin: 1px 3px">🧭</p>
 
-        <p style="font-size: 20px; margin: 0; padding: 1px">{{ width }}</p>
+        <p style="font-size: 25px; margin: 0; padding: 1px">{{ width }}</p>
       </div>
       <div
         style="
@@ -45,12 +45,27 @@
         "
         id="breakpointcompass_progresscontainer"
       >
+        <div
+          v-for="(x, i) in gauge"
+          :key="i"
+          style="
+            width: 1px;
+            opacity: 0.5;
+            background-color: #333333;
+            position: absolute;
+            bottom: 0px;
+          "
+          :style="{
+            left: ((i * 25) / 4).toString() + '%',
+            height: x.toString() + '%',
+          }"
+        ></div>
         <p
           style="
             font-size: 12px;
             margin: 0;
             padding: 0;
-            color: red;
+            color: #333;
             position: absolute;
             top: 0px;
             left: 1px;
@@ -62,8 +77,8 @@
         </p>
         <p
           style="
-            font-size: 12px;
-            color: red;
+            font-size: 14px;
+            color: #333;
             padding: 0;
             position: absolute;
             bottom: 0px;
@@ -71,7 +86,7 @@
             left: 1px;
             font-weight: 500;
           "
-          v-show="prevPx !== width && prevPx !== 0"
+          v-show="prevPx !== 0"
         >
           {{ prevPx }}
         </p>
@@ -79,7 +94,7 @@
         <p
           style="
             font-size: 12px;
-            color: red;
+            color: #333;
             margin: 0;
             padding: 0;
             position: absolute;
@@ -93,10 +108,10 @@
         </p>
         <p
           style="
-            font-size: 12px;
+            font-size: 14px;
             margin: 0;
             padding: 0;
-            color: red;
+            color: #333;
             position: absolute;
             bottom: 0px;
             right: 1px;
@@ -136,6 +151,10 @@ import { useDraggable } from "@vueuse/core";
 const injected: BreakpointC | undefined = inject("BreakpointCO");
 
 const el = ref<HTMLElement | null>(null);
+
+const gauge = ref([
+  0, 15, 35, 15, 50, 15, 35, 15, 75, 15, 35, 15, 50, 15, 35, 15, 0,
+]);
 
 const { width, height } = useWindowSize();
 

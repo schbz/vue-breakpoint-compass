@@ -23,7 +23,7 @@
 
 ## About
 
-A typescript-ready vue 3 plugin created to provide devs with more detailed feedback as to how the current window size fits into any given set of CSS breakpoints. A small display shows the breakpoint name and how far away the nearest breakpoints are in pixel percentages with a progressbar.
+A typescript-ready vue 3 plugin created to provide web designers with more detailed feedback as to how the current window size fits into any given set of CSS breakpoints. A small display shows the breakpoint name and how far away the nearest breakpoints are in pixel percentages with a progressbar.
 
 [Demo](https://skylrs.com/apps/vbcdemo)
 
@@ -33,23 +33,12 @@ A typescript-ready vue 3 plugin created to provide devs with more detailed feedb
 - Add your own custom breakpoint set, or modify existing sets
 - Breakpoint set objects can be used in other components via inject
 - Draggable interface
+- Makes an excellent template for creating similar vue plugin projects
 
 ## Install
 
 ```bash
 npm i vue-breakpoint-compass
-```
-
-or
-
-```bash
-yarn add vue-breakpoint-compass
-```
-
-or
-
-```bash
-pnpm add vue-breakpoint-compass
 ```
 
 ## Setup
@@ -113,6 +102,7 @@ const MyOptions: BreakpointCompassOptions = {
 - breakpointsMaterialize
 - breakpointsSkeleton
 - breakpointsSemanticUI
+- breakpointsVuetify
 
 ```javascript
 import breakpointsBootstrapv5 from "vue-breakpoint-compass";
@@ -131,3 +121,7 @@ Use: (in your local .vue template/component) during design phase or responsivene
 <breakpoint-compass v-if="devModeActive" />
 
 ```
+
+## Support
+
+If you find this plugin useful, please consider leaving a [tip](https://skylrs.com/fund).

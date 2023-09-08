@@ -19,6 +19,7 @@ import {
   breakpointsMaterialize,
   breakpointsQuasar,
   breakpointsSemanticUI,
+  breakpointsVuetify,
 } from "./presets";
 
 import { BreakpointCompassPlugin } from "./BreakpointCompassPlugin";
@@ -43,4 +44,5 @@ export {
   breakpointsMaterialize,
   breakpointsQuasar,
   breakpointsSemanticUI,
+  breakpointsVuetify,
 };

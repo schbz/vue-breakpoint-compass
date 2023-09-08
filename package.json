@@ -1,6 +1,6 @@
 {
   "name": "vue-breakpoint-compass",
-  "version": "1.1.2",
+  "version": "1.1.4",
   "description": "An easy to use plugin that makes responsive design with css breakpoints even easier.",
   "main": "dist/index.js",
   "private": false,
@@ -30,7 +30,7 @@
   "dependencies": {
     "@vueuse/core": "^8.6.0"
   },
-  "author": "Schuyler",
+  "author": "Schuyler Sloane",
   "bugs": {
     "url": "https://github.com/schbz/vue-breakpoint-compass/issues"
   },

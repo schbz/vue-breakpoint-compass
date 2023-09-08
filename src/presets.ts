@@ -107,3 +107,11 @@ export const breakpointsSkeleton: BreakpointSet = [
   { name: "desktop", px: 1000 },
   { name: "desktop hd", px: 1200 },
 ];
+
+export const breakpointsVuetify: BreakpointSet = [
+  { name: "xs", px: 0 },
+  { name: "sm", px: 600 },
+  { name: "md", px: 960 },
+  { name: "lg", px: 1264 },
+  { name: "xl", px: 1904 },
+];
