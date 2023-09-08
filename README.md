@@ -5,7 +5,7 @@
       <img width="200" src="https://raw.githubusercontent.com/schbz/vue-breakpoint-compass/master/docs/Animation.gif" alt="Example image">
     </a>
     <br>
-    An easy to use plugin that makes responsive design with css breakpoints even easier
+    A simple plugin that makes responsive design with css breakpoints a bit more intuitive
 </p>
 
 <p align="center">
@@ -15,7 +15,6 @@
     <img src="https://img.shields.io/badge/dependencies-1-brightgreen.svg" />
     <a href="https://unpkg.com/vue-breakpoint-compass"><img src="https://img.badgesize.io/https://unpkg.com/vue-breakpoint-compass.svg?compression=gzip&label=umd:minzip" alt="unpkg umd min:gzip size"</a>
     <a href="https://circleci.com/gh/schbz/vue-breakpoint-compass/tree/master"><img src="https://circleci.com/gh/schbz/vue-breakpoint-compass/tree/master.svg?style=svg" alt="CircleCI"</a>
-    <a href="https://github.com/schbz/vue-breakpoint-compass/tree/master/src/types"><img src="https://img.shields.io/npm/types/vue-breakpoint-compass.svg?style=popout" alt="npm type definitions"</a>
     <a href="https://makeapullrequest.com"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome"</a>
 </p>
 
